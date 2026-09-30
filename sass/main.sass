@@ -1,0 +1,61 @@
+@use "mixins"
+@use "variables"
+*
+    margin: 0
+    padding: 0
+    font-family: 'Montserrat', sans-serif
+
+body
+    background-color: variables.$crema
+    height: 100vh
+
+main
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    // color: variables.$tinta
+    .top-bar
+        @include mixins.flex($height: 60px, $justify: space-between, $align: center,$padding: 0 2rem)
+        background-color: variables.$tomate
+        color: variables.$blanco
+        h2,h4
+            align-self: center
+        .totalRecetas
+            background-color: variables.$tomate-oscuro
+            padding: .5rem 1rem
+            border-radius: variables.$bordes-botones*6
+
+    .filtros
+        @include mixins.flex($height: 60px, $justify: center, $align: center,$padding: 0 2rem,$gap: 1rem)
+
+        .input,.selectEtiquetas
+            background-color: variables.$blanco
+            @include mixins.input($width: 70%,$border-radius: variables.$bordes-botones,$border: 1px solid variables.$borde,$padding: .5rem 1rem)
+            padding: variables.$padding-comun - .5rem
+            gap: .5rem
+            input,select
+
+                @include mixins.input($border-radius: variables.$bordes-botones)
+            i
+                color: variables.$gris
+        .selectEtiquetas
+            justify-content: space-between
+            @include mixins.flex($justify:space-between ,$align:center,$gap:.5rem)
+            padding: variables.$padding-comun - .5rem
+            width: 15%
+            i
+                width: 10%
+            select
+                width: 90%
+                cursor: pointer
+
+        button
+            @include mixins.button($border-radius: variables.$bordes-botones,$padding: .5rem 1rem,$background-color: variables.$tomate-oscuro,$color:variables.$blanco)
+
+    .recetas
+        @include mixins.flex($wrap:wrap ,$gap:2rem,$width:100%,$justify:center)
+
+        receta
+            width: 20%
+            img
+                width: 100%

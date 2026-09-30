@@ -1,0 +1,32 @@
+@mixin flex($direccion:row,$width:auto,$height:auto,$justify:normal,$align:normal,$wrap:nowrap,$gap:0,$padding:0)
+    display: flex
+    flex-direction:$direccion
+    justify-content:$justify
+    align-items:$align
+    flex-wrap:$wrap
+    gap:$gap
+    width:$width
+    height:$height
+    padding:$padding
+
+@mixin input($width:auto,$height:auto,$padding:0,$border:none,$border-radius:0,$outline:none)
+    width:$width
+    height:$height
+    padding:$padding
+    border:$border
+    border-radius:$border-radius
+    outline:$outline
+    font-size: 16px
+
+@mixin button($width:auto,$height:auto,$padding:0,$border:none,$border-radius:0,$outline:none,$background-color:transparent,$color:variable.$tomate-oscuro)
+    width:$width
+    height:$height
+    padding:$padding
+    border:$border
+    border-radius:$border-radius
+    outline:$outline
+    background-color:$background-color
+    color:$color
+    font-size: 16px
+    font-weight: 500
+    cursor: pointer

@@ -9,15 +9,31 @@ body
     background-color: variables.$crema
     height: 100vh
 
+button
+    cursor: pointer
+
+iconos            
+    font-weight: 500
+    @include mixins.flex($gap:1rem,$wrap:wrap)
+    color: variables.$gris
+i
+    color: variables.$tomate
+
 main
     display: flex
     flex-direction: column
     gap: 1rem
     // color: variables.$tinta
+    .top
+        position: sticky
+        top: 0
+        width: 100%
     .top-bar
-        @include mixins.flex($height: 60px, $justify: space-between, $align: center,$padding: 0 2rem)
+        @include mixins.flex($height: 60px,$justify: space-between, $align: center,$padding: 0 2rem)
         background-color: variables.$tomate
         color: variables.$blanco
+        i
+            color:  variables.$blanco
         h2,h4
             align-self: center
         .totalRecetas
@@ -26,18 +42,22 @@ main
             border-radius: variables.$bordes-botones*6
 
     .filtros
-        @include mixins.flex($height: 60px, $justify: center, $align: center,$padding: 0 2rem,$gap: 1rem)
+        @include mixins.flex($wrap:wrap, $justify: center, $align: center,$padding: 1rem 2rem,$gap: 1rem)
+        background-color: variables.$crema
 
         .input,.selectEtiquetas
             background-color: variables.$blanco
+            @include mixins.flex($justify:space-between ,$align:center,$gap:.5rem)
             @include mixins.input($width: 70%,$border-radius: variables.$bordes-botones,$border: 1px solid variables.$borde,$padding: .5rem 1rem)
-            padding: variables.$padding-comun - .5rem
-            gap: .5rem
+
             input,select
 
-                @include mixins.input($border-radius: variables.$bordes-botones)
+                @include mixins.input($width:95%,$border-radius: variables.$bordes-botones)
+                height: 2rem
+
             i
                 color: variables.$gris
+           
         .selectEtiquetas
             justify-content: space-between
             @include mixins.flex($justify:space-between ,$align:center,$gap:.5rem)
@@ -53,9 +73,118 @@ main
             @include mixins.button($border-radius: variables.$bordes-botones,$padding: .5rem 1rem,$background-color: variables.$tomate-oscuro,$color:variables.$blanco)
 
     .recetas
-        @include mixins.flex($wrap:wrap ,$gap:2rem,$width:100%,$justify:center)
+        @include mixins.flex($wrap:wrap ,$gap:2rem,$width:100%,$justify:center,$height:74vh,$padding: 1rem 0 )
+        overflow-y: scroll
+        
 
         receta
-            width: 20%
+
+            @include mixins.flex($direccion:column,$width: 20rem,$gap:1rem,$height:25rem)
+            box-shadow: -3px 3px 10px #0000001a
+            border-radius: variables.$bordes-botones
+            cursor: pointer
+            margin-bottom: 2rem 
+
             img
                 width: 100%
+                border-top-left-radius: variables.$bordes-botones
+                border-top-right-radius: variables.$bordes-botones
+                object-fit: cover
+                height: 60%
+
+            info
+                @include mixins.flex($direccion:column,$gap:1rem ,$padding:1rem )
+                
+                pais
+                    color: variables.$tomate-oscuro
+                    font-weight: 600
+                    background-color: #e8562d1a
+                    @include mixins.flex($padding:.5rem 1rem, $width:fit-content)
+                    border-radius: 3rem
+
+
+.fondoInfoReceta
+    position: absolute
+    background-color: #00000061
+    z-index: 2
+    backdrop-filter: blur(2px)
+    @include mixins.flex($width:100% ,$height:100% ,$justify:center ,$align:center)
+    display: none
+
+    .infoReceta
+        @include mixins.flex($direccion: column,$width:70% ,$height:84% ,$gap: 1rem)
+        border-radius: variables.$bordes-botones + .5rem
+        background-color: variables.$blanco
+
+        .imagenReceta
+            // background-color: #0000002b
+            border-top-left-radius: variables.$bordes-botones + .5rem
+            border-top-right-radius: variables.$bordes-botones + .5rem
+            overflow-y: hidden
+            position: relative
+            // background-position: bottom
+            // background-size: cover
+            // background-repeat: repeat
+            @include mixins.flex($height:40%,$justify: right ,$align:start )
+            img
+                width: 100%
+                height: 100%
+                object-position: center
+                object-fit: cover
+
+            .cancelar
+                border-radius: 3rem
+                padding: .5rem
+                border: none
+                outline: none
+                font-size: 16px
+                position: absolute
+                margin: 1rem
+
+        .infoReceta-info
+            @include mixins.flex($direccion:column,$height:60%,$padding: 0 1rem,$gap:2rem)
+            .up-info
+                @include mixins.flex($direccion:column,$gap: 1rem)
+                
+            .down-info
+                @include mixins.flex($width:100%,$height:70%)
+                h3
+                    position: sticky
+                    top: 0
+                    background-color: variables.$blanco
+                    @include mixins.flex($padding: .5 0rem,$gap:1rem,$align:center)
+
+
+                .down-left,.down-right
+                    @include mixins.flex($direccion:column,$height:100%,$padding: 0 1rem)
+                    overflow-y: auto
+                    ul,ol
+                        padding: 0 1.5rem
+                        @include mixins.flex($direccion:column,$height:100%,$padding: 1rem,$gap:1rem)
+                        color: variables.$gris
+                        font-weight: 500
+
+                .down-left
+                    width: 40%
+
+.move
+    @include mixins.flex($width:98%,$justify:space-between ,$align: center,$padding:.5rem 1rem,$gap:.5rem )
+    color: variables.$gris
+    font-size: large
+    position: fixed
+    bottom: 0
+    background-color: variables.$crema
+    
+
+    button
+        font-size: large
+        padding: .2rem  
+        width: 2rem
+        border-radius: variables.$bordes-botones
+        border: solid 1px variables.$borde            
+
+
+        
+    
+
+    

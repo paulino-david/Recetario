@@ -1,60 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
-        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Font text -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main id="main">
-        <div class="top-bar">
-            
-            <h2>
-                <i class="fa-solid fa-utensils"></i> Recetario
-            </h2>
+      <div class="fondoInfoReceta" id="fondoInfoReceta">
+        <div class="infoReceta" id="infoReceta"></div>
+      </div>
 
-            <h4 class="totalRecetas">
-                50 recetas
-            </h4>
+      <div class="top">
+        <div class="top-bar">
+          <h2><i class="fa-solid fa-utensils"></i> Recetario</h2>
+
+          <h4 class="totalRecetas">50 recetas</h4>
         </div>
 
         <div class="filtros">
-            <div class="input">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Busca una receta..." name="buscar" id="buscar" class="buscar">
-            </div>
+          <div class="input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              placeholder="Busca una receta..."
+              name="buscar"
+              id="buscar"
+              class="buscar"
+            />
+          </div>
 
-            <div class="selectEtiquetas">
-                <i class="fa-solid fa-tag"></i>
-                <select name="" id="">
-                    <option value="">Todas las etiquetas</option>
-                    <option value="vegetariana">Vegetariana</option>
-                    <option value="vegana">Vegana</option>
-                    <option value="sin-gluten">Sin gluten</option>
-                </select>
-            </div>
+          <div class="selectEtiquetas">
+            <i class="fa-solid fa-tag"></i>
+            <select name="" id="etiquetas">
+                <option value="">Todas las etiquetas</option>
+            </select>
+          </div>
 
-            <button type="button">Buscar</button>
+          <button type="button" id="btn-etiqueta">Buscar</button>
         </div>
+      </div>
 
-        <div class="recetas" id="recetas">
+      <div class="recetas" id="recetas"></div>
 
-        </div>
     </main>
+    <footer class="move">
+      <div class="paginas">Pagina 1</div>
+      <div>
+        <button><i class="fa-solid fa-angle-left"></i></button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button disabled>...</button>
+        <button><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </footer>
     <script src="./js/main.js" type="module"></script>
-</body>
-
+  </body>
 </html>

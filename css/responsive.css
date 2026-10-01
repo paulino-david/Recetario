@@ -1,0 +1,13 @@
+@media only screen and (max-width: 480px) {
+  .input, .selectEtiquetas, #btn-etiqueta {
+    width: 100% !important;
+  }
+  .infoReceta {
+    width: 85% !important;
+  }
+  .down-info {
+    flex-wrap: wrap !important;
+    height: 100% !important;
+    overflow-y: scroll;
+  }
+}/*# sourceMappingURL=responsive.css.map */

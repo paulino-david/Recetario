@@ -129,6 +129,7 @@ main .filtros .selectEtiquetas i {
 main .filtros .selectEtiquetas select {
   width: 90%;
   cursor: pointer;
+  background-color: transparent;
 }
 main .filtros button {
   width: auto;

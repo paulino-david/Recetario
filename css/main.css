@@ -6,7 +6,7 @@
 
 body {
   background-color: #fff8f1;
-  height: 100vh;
+  height: 100dvh;
 }
 
 button {
@@ -32,9 +32,17 @@ i {
 }
 
 main {
+  gap: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
 }
 main .top {
   position: sticky;
@@ -151,7 +159,7 @@ main .recetas {
   align-items: normal;
   flex-wrap: wrap;
   gap: 2rem;
-  width: 100%;
+  width: auto;
   height: 74vh;
   padding: 1rem 0;
   overflow-y: scroll;
@@ -164,7 +172,7 @@ main .recetas receta {
   flex-wrap: nowrap;
   gap: 1rem;
   width: 20rem;
-  height: 25rem;
+  height: 30rem;
   padding: 0;
   box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.1019607843);
   border-radius: 0.5rem;

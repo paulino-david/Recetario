@@ -5,6 +5,8 @@ const divRecetas = document.getElementById("recetas")
 const fondoInfoReceta = document.getElementById("fondoInfoReceta")
 const infoReceta = document.getElementById('infoReceta')
 
+const cantidad=document.getElementById("cantidad")
+
 
 const pintarInfoReceta = (receta) => {
 
@@ -86,6 +88,7 @@ const pintarRecetas = (buscar) => {
     const fetchRecipes = cargarDatos(buscar)
         .then((datos) => {
             console.log(datos.recipes)
+            cantidad.textContent=`${datos.recipes.length} recetas`
             datos.recipes.forEach((receta) => {
                 const recetaElement = document.createElement("receta")
 

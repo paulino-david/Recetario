@@ -10,4 +10,8 @@
     height: 100% !important;
     overflow-y: scroll;
   }
+  .down-info .down-left, .down-info .down-right {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
 }/*# sourceMappingURL=responsive.css.map */

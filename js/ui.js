@@ -5,7 +5,7 @@ const divRecetas = document.getElementById("recetas")
 const fondoInfoReceta = document.getElementById("fondoInfoReceta")
 const infoReceta = document.getElementById('infoReceta')
 
-const cantidad=document.getElementById("cantidad")
+const cantidad = document.getElementById("cantidad")
 
 
 const pintarInfoReceta = (receta) => {
@@ -85,72 +85,82 @@ const pintarInfoReceta = (receta) => {
 
 const pintarRecetas = (buscar) => {
 
-    const fetchRecipes = cargarDatos(buscar)
-        .then((datos) => {
-            console.log(datos.recipes)
-            cantidad.textContent=`${datos.recipes.length} recetas`
-            datos.recipes.forEach((receta) => {
-                const recetaElement = document.createElement("receta")
+    // divRecetas.innerHTML = `
+    //     <div class="cargando">
+    //         <i class="fa-solid fa-spinner"></i>
+    //         Cargando
+    //     </div>        
+    // `
+    // setTimeout(() => {
 
-                const imagen = document.createElement("img")
-                imagen.src = receta.image
-                imagen.alt = receta.title
+    //     const fetchRecipes = cargarDatos(buscar)
+    //         .then((datos) => {
+    //             console.log(datos.recipes)
+    //             cantidad.textContent = `${datos.recipes.length} recetas`
+    //             datos.recipes.forEach((receta) => {
+    //                 const recetaElement = document.createElement("receta")
 
-                const titulo = document.createElement("h3")
-                titulo.textContent = receta.name
+    //                 const imagen = document.createElement("img")
+    //                 imagen.src = receta.image
+    //                 imagen.alt = receta.title
+
+    //                 const titulo = document.createElement("h3")
+    //                 titulo.textContent = receta.name
 
 
-                const pais = document.createElement("pais")
-                pais.textContent = receta.cuisine
+    //                 const pais = document.createElement("pais")
+    //                 pais.textContent = receta.cuisine
 
-                const info = document.createElement("info")
+    //                 const info = document.createElement("info")
 
-                const iconos = document.createElement("iconos")
-                iconos.innerHTML = `
-                <span > <i class="fa-regular fa-clock"></i> ${receta.cookTimeMinutes} min</span>
-                <span ><i class="fa-solid fa-signal"></i> ${receta.difficulty}</span>
-                <span ><i class="fa-solid fa-star"></i> ${receta.rating}</span>
+    //                 const iconos = document.createElement("iconos")
+    //                 iconos.innerHTML = `
+    //                 <span > <i class="fa-regular fa-clock"></i> ${receta.cookTimeMinutes} min</span>
+    //                 <span ><i class="fa-solid fa-signal"></i> ${receta.difficulty}</span>
+    //                 <span ><i class="fa-solid fa-star"></i> ${receta.rating}</span>
+    
+    //                 `
+    //                 info.append(
+    //                     pais,
+    //                     titulo,
+    //                     iconos
+    //                 )
 
-                `
-                info.append(
-                    pais,
-                    titulo,
-                    iconos
-                )
+    //                 recetaElement.append(
+    //                     imagen,
+    //                     info
+    //                 )
 
-                recetaElement.append(
-                    imagen,
-                    info
-                )
+    //                 divRecetas.appendChild(recetaElement)
 
-                divRecetas.appendChild(recetaElement)
+    //                 // infoReceta.innerHTML=""
+    //                 recetaElement.addEventListener("click", () => {
+    //                     console.log(receta.name)
+    //                     fondoInfoReceta.style.display = "flex"
+    //                     pintarInfoReceta(receta)
 
-                // infoReceta.innerHTML=""
-                recetaElement.addEventListener("click", () => {
-                    console.log(receta.name)
-                    fondoInfoReceta.style.display = "flex"
-                    pintarInfoReceta(receta)
+    //                 })
 
-                })
+    //                 // console.log(divRecetas)
+    //             })
+    //         })
+    // }, 2000)
 
-                // console.log(divRecetas)
-            })
-        })
 
 }
 
-const etiquetas=document.getElementById("etiquetas")
+const etiquetas = document.getElementById("etiquetas")
 
-export const tags= async ()=>{
-    const respuesta= await fetch("https://dummyjson.com/recipes/tags")
-    const datos=respuesta.json()
-    .then(tags=>{
-        tags.forEach(tag=>{
-            const option=document.createElement("option")
-            option.textContent=tag
-            etiquetas.append(option)
+export const tags = async () => {
+    const respuesta = await fetch("https://dummyjson.com/recipes/tags")
+    const datos = respuesta.json()
+        .then(tags => {
+            tags.forEach(tag => {
+                const option = document.createElement("option")
+                option.textContent = tag
+                etiquetas.append(option)
+            })
         })
-    })
 }
 
 export default pintarRecetas

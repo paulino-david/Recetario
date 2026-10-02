@@ -162,7 +162,17 @@ main .recetas {
   width: auto;
   height: 74vh;
   padding: 1rem 0;
-  overflow-y: scroll;
+}
+main .recetas .signals {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: normal;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: auto;
+  height: auto;
+  padding: 1rem 0;
 }
 main .recetas receta {
   display: flex;
@@ -284,7 +294,7 @@ main .recetas receta info pais {
   flex-wrap: nowrap;
   gap: 2rem;
   width: auto;
-  height: 60%;
+  height: 70%;
   padding: 0 1rem;
 }
 .fondoInfoReceta .infoReceta .infoReceta-info .up-info {

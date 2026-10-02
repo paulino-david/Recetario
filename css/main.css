@@ -118,7 +118,6 @@ main .filtros .input i, main .filtros .selectEtiquetas i {
   color: #7b706a;
 }
 main .filtros .selectEtiquetas {
-  justify-content: space-between;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -159,20 +158,24 @@ main .recetas {
   align-items: normal;
   flex-wrap: wrap;
   gap: 2rem;
-  width: auto;
+  width: 100%;
   height: 74vh;
   padding: 1rem 0;
 }
 main .recetas .signals {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: normal;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: auto;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: 100%;
   height: auto;
   padding: 1rem 0;
+  font-size: x-large;
+}
+main .recetas .signals i {
+  font-size: xx-large;
 }
 main .recetas receta {
   display: flex;

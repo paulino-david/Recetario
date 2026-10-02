@@ -61,7 +61,6 @@ main
                 color: variables.$gris
            
         .selectEtiquetas
-            justify-content: space-between
             @include mixins.flex($justify:space-between ,$align:center,$gap:.5rem)
             padding: variables.$padding-comun - .5rem
             width: 15%
@@ -76,14 +75,15 @@ main
             @include mixins.button($border-radius: variables.$bordes-botones,$padding: .5rem 1rem,$background-color: variables.$tomate-oscuro,$color:variables.$blanco)
 
     .recetas
-        @include mixins.flex($wrap:wrap ,$gap:2rem,$justify:center,$height:74vh,$padding: 1rem 0 )
+        @include mixins.flex($width:100% ,$wrap:wrap ,$gap:2rem,$justify:center,$height:74vh,$padding: 1rem 0 )
         
 
         .signals
-            @include mixins.flex($wrap:wrap ,$gap:2rem,$justify:center,$padding: 1rem 0 )
+            @include mixins.flex($direccion:column,$width: 100%,$gap:1rem,$align:center,$justify:center,$padding: 1rem 0 )
+            font-size: x-large       
+            i
+                font-size: xx-large     
             
-            
-        
 
         receta
 
@@ -92,44 +92,6 @@ main
             border-radius: variables.$bordes-botones
             cursor: pointer
             margin-bottom: 2rem 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.figma.com/proto/yaWhYsHAP3TmOSWYpAjolJ/Trabajo-producto--Autolayout?node-id=1-15&p=f&viewport=100%2C285%2C0.5&t=zclWUl0KfcJxiqiK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1
-
-
-
-
-
-
-
-
-
 
             img
                 width: 100%

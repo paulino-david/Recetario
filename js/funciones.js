@@ -4,3 +4,4 @@ export const cargarDatos=async (buscar)=>{
     const datos = await response.json();
     return datos;
 }
+

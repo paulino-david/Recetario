@@ -1,4 +1,4 @@
-import pintarRecetas,{tags} from "./ui.js";
+import pintarRecetas,{tags,signal} from "./ui.js";
 
 const divRecetas = document.getElementById("recetas")
 
@@ -8,16 +8,21 @@ const btn_buscar=document.getElementById("btn-etiqueta")
 
 
 buscar.addEventListener("input",()=>{
-    divRecetas.innerHTML=""
-    pintarRecetas("search?q="+buscar.value)
+    signal("cargar")
+    setTimeout(pintarRecetas("search?q="+buscar.value)?pintarRecetas("search?q="+buscar.value):signal("not found"),2000)
+    
 })
 
 btn_buscar.addEventListener("click",()=>{
-    divRecetas.innerHTML=""
+    signal("cargar")
     etiquetas.value?pintarRecetas("tag/"+etiquetas.value):pintarRecetas()
         
 })
-pintarRecetas()
-tags()
+signal("cargar")
+setTimeout(()=>{
+    pintarRecetas()
+    tags()
+
+},2000)
 
 

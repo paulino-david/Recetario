@@ -86,97 +86,117 @@ const pintarInfoReceta = (receta) => {
 export const signal = (estado) => {
 
     if (estado == "cargar") {
+        cantidad.style.display = "none"
         divRecetas.innerHTML = `
             <div class="signals">
           <i class="fa-solid fa-spinner"></i>
+          <p>
+          
           Cargando recetas ...
+          </p>
         </div>
     `
     }
 
     else if (estado == "not found") {
+        cantidad.style.display = "flex"
+
+
         divRecetas.innerHTML = `
         <div class="signals">
             <i class="fa-solid fa-bowl-food"></i>
+            <p>
+            
             No hay receta que coincida con tu búsqueda.
+            </p>
         </div>
     `
+        console.log("not found")
     }
     else if (estado == "server error") {
+        cantidad.style.display = "none"
+
         divRecetas.innerHTML = `
         <div class="signals">
             <i class="fa-solid fa-triangle-exclamation"></i>
-            No hay receta que coincida con tu búsqueda.
+            <p>
+            
+            No se han podido cargar las recetas. El servidor respondió 500
+            </p>
 
-            <button class="boton">
+            <button class="boton" id="recargar">
                 <i class="fa-solid fa-rotate-right"></i> Recargar
             </button>
         </div>
     `
     }
+
 }
 
-const pintarRecetas = (buscar) => {
+const pintarRecetas = async (buscar) => {
     divRecetas.innerHTML = ""
+    try {
 
-    // divRecetas.innerHTML = `
-    //     <div class="cargando">
-    //         <i class="fa-solid fa-spinner"></i>
-    //         Cargando
-    //     </div>        
-    // `
+        const fetchRecipes = await cargarDatos(buscar)
+        console.log(fetchRecipes.recipes)
+        cantidad.textContent = fetchRecipes.recipes.length<=1?`${fetchRecipes.recipes.length} recetas`: `${fetchRecipes.recipes.length} receta`
+        cantidad.style.display = "flex"
+        fetchRecipes.recipes.forEach((receta) => {
+            const recetaElement = document.createElement("receta")
 
-    const fetchRecipes = cargarDatos(buscar)
-        .then((datos) => {
-            console.log(datos.recipes)
-            cantidad.textContent = `${datos.recipes.length} recetas`
-            datos.recipes.forEach((receta) => {
-                const recetaElement = document.createElement("receta")
+            const imagen = document.createElement("img")
+            imagen.src = receta.image
+            imagen.alt = receta.title
 
-                const imagen = document.createElement("img")
-                imagen.src = receta.image
-                imagen.alt = receta.title
-
-                const titulo = document.createElement("h3")
-                titulo.textContent = receta.name
+            const titulo = document.createElement("h3")
+            titulo.textContent = receta.name
 
 
-                const pais = document.createElement("pais")
-                pais.textContent = receta.cuisine
+            const pais = document.createElement("pais")
+            pais.textContent = receta.cuisine
 
-                const info = document.createElement("info")
+            const info = document.createElement("info")
 
-                const iconos = document.createElement("iconos")
-                iconos.innerHTML = `
-                    <span > <i class="fa-regular fa-clock"></i> ${receta.cookTimeMinutes} min</span>
-                    <span ><i class="fa-solid fa-signal"></i> ${receta.difficulty}</span>
-                    <span ><i class="fa-solid fa-star"></i> ${receta.rating}</span>
+            const iconos = document.createElement("iconos")
+            iconos.innerHTML = `
+                        <span > <i class="fa-regular fa-clock"></i> ${receta.cookTimeMinutes} min</span>
+                        <span ><i class="fa-solid fa-signal"></i> ${receta.difficulty}</span>
+                        <span ><i class="fa-solid fa-star"></i> ${receta.rating}</span>
+    
+                        `
+            info.append(
+                pais,
+                titulo,
+                iconos
+            )
 
-                    `
-                info.append(
-                    pais,
-                    titulo,
-                    iconos
-                )
+            recetaElement.append(
+                imagen,
+                info
+            )
 
-                recetaElement.append(
-                    imagen,
-                    info
-                )
+            divRecetas.append(recetaElement)
 
-                divRecetas.appendChild(recetaElement)
+            recetaElement.addEventListener("click", () => {
+                console.log(receta.name)
+                fondoInfoReceta.style.display = "flex"
+                pintarInfoReceta(receta)
 
-                // infoReceta.innerHTML=""
-                recetaElement.addEventListener("click", () => {
-                    console.log(receta.name)
-                    fondoInfoReceta.style.display = "flex"
-                    pintarInfoReceta(receta)
-
-                })
-
-                // console.log(divRecetas)
             })
+
         })
+
+        return fetchRecipes.recipes.length
+    }
+
+    catch {
+        signal("server error")
+        const btn_recargar = document.getElementById("recargar")
+
+        btn_recargar.addEventListener("click", () => {
+            window.location.reload()
+        })
+    }
 
 }
 

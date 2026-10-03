@@ -12,6 +12,11 @@
   }
   .down-info .down-left, .down-info .down-right {
     width: 100% !important;
-    overflow-x: hidden !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+  .signals p {
+    width: 100% !important;
+    font-size: large;
   }
 }/*# sourceMappingURL=responsive.css.map */
